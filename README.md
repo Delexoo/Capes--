@@ -17,7 +17,7 @@ Welcome to my Capes++ python program!
 • Firstly, Run Minecraft using one of your FREE minecraft capes before you run the python program.
 (This is so Minecraft can automatically create your Cape asset)
 
-• Run the program choose your Cape & Run Minecraft!
+• Run the program choose your Cape & Run Minecraft! And reload Minecraft one last time!
 
 
 # Additional Information:
