@@ -1,1 +1,31 @@
-# Capes--
+Welcome to my Capes++ program!
+# 3 Requirements:
+
+• Only works on Windows Operating System
+
+• Currently works if you have at least one of the free Minecraft Capes (Migrator, TikTok, Twitch, Cherry Blossom, 15th Anni... etc...)
+
+• Only works for version 1.8.9
+
+
+# Instructions:
+
+• Download Capes++.exe & "Capes" ("All Minecraft Capes")
+
+• Extract "Capes.zip" to [Desktop].
+
+• Firstly, Run Minecraft using one of your FREE minecraft capes before you run the python program.
+(This is so Minecraft can automatically create your Cape asset)
+
+• Run the program choose your Cape & Run Minecraft!
+
+
+# Additional Information:
+
+[!] Beware of your Anti-Virus, It may go off.
+
+Feel free to checkout the source code for free on my GitHub: [https://github.com/Delexoo/Minecraft-Cape-Changer/blob/main/(Source%20Code)%20Minecraft-Cape-Changer
+](https://github.com/Delexoo/Capes-/blob/main/Capes%2B%2B%20Source%20Code.md)
+Visit my linktree for more! https://linktr.ee/delexo
+
+Thank you for downloading Capes++ Client!
