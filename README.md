@@ -10,7 +10,7 @@ Welcome to my Capes++ python program!
 
 # Instructions:
 
-• Find the "<> Code" to Download all as a ".zip" the files for you (Capes++.exe & Capes *All Minecraft Capes*)
+• Find the "<> Code" then find "Download.zip" to download all the files for you (Capes++.exe & Capes *All Minecraft Capes*)
 
 • Extract "Capes.zip" to [Desktop].
 
