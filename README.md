@@ -12,7 +12,7 @@ Welcome to my Capes++ python program!
 
 • Find the "<> Code" then find "Download.zip" to download all the files for you (Capes++.exe & Capes *All Minecraft Capes*)
 
-• Extract "Capes.zip" to [Desktop].
+• Extract "Capes.zip" to [Desktop]. Open "Capes--main" and drag the "Capes" folder into Desktop.
 
 • Firstly, Run Minecraft using one of your FREE minecraft capes before you run the python program.
 (This is so Minecraft can automatically create your Cape asset)
