@@ -1,4 +1,4 @@
-Welcome to my Capes++ python program!
+Have you ever wanted to use a Cape you dont have? You're in the right place!
 # 3 Requirements:
 
 • Only works on Windows Operating System
