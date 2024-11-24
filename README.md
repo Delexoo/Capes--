@@ -24,8 +24,7 @@ Welcome to my Capes++ program!
 
 [!] Beware of your Anti-Virus, It may go off.
 
-Feel free to checkout the source code for free on my GitHub: [https://github.com/Delexoo/Minecraft-Cape-Changer/blob/main/(Source%20Code)%20Minecraft-Cape-Changer
-](https://github.com/Delexoo/Capes-/blob/main/Capes%2B%2B%20Source%20Code.md)
+Feel free to checkout the source code for free on my GitHub: [https://github.com/Delexoo/Capes--/blob/main/Python%20Source%20Code]
 Visit my linktree for more! https://linktr.ee/delexo
 
 Thank you for downloading Capes++ Client!
