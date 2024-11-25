@@ -10,9 +10,9 @@ Have you ever wanted to use a Cape you dont have? You're in the right place!
 
 # Instructions:
 
-• Find the "<> Code" then find "Download.zip" to download all the files for you (Capes++.exe & Capes *All Minecraft Capes*)
+• Find the "<> Code" then find "Download.zip" to download all the files for you (Capes++.exe & Capes **All Minecraft Capes**)
 
-• Extract "Capes.zip" to [Desktop]. Open "Capes--main" and drag the .EXE file & the "Capes" folder onto your Desktop. (Feel free to delete the Source Code or ReadMe)
+• Extract "Capes--main.zip" to [Desktop]. Open "Capes--main" and drag the .EXE file & the "Capes" folder onto your Desktop. (Feel free to delete the Source Code or ReadMe)
 
 • Firstly, Run Minecraft using one of your FREE minecraft capes before you run the python program.
 (This is so Minecraft can automatically create your Cape asset)
