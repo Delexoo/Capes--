@@ -17,7 +17,7 @@ Have you ever wanted to use a Cape you dont have? You're in the right place!
 • Firstly, Run Minecraft using one of your FREE minecraft capes before you run the python program.
 (This is so Minecraft can automatically create your Cape asset)
 
-• Run the program choose your Cape & Run Minecraft! And reload Minecraft one last time!
+• Run the program and choose your Cape & reload Minecraft one last time!
 
 
 # Additional Information:
