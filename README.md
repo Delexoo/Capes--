@@ -1,4 +1,4 @@
-Have you ever wanted to use a Cape you dont have? You're in the right place!
+Have you ever wanted to use a Cape you dont have? Well you're in the right place!
 # 3 Requirements:
 
 • Only works on Windows Operating System
