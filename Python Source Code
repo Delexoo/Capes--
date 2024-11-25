@@ -4,6 +4,7 @@ import customtkinter as ctk # type: ignore
 from tkinter import messagebox
 from PIL import Image as PilImage # type: ignore
 import webbrowser
+from tkinter import *
 
 # Get the user's desktop directory
 desktop_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'OneDrive', 'Desktop')
@@ -151,8 +152,8 @@ def show_main_page():
     donation_button.place(x=10, y=app.winfo_height()-50)
 
     # Create an exit button
-    exit_button = ctk.CTkButton(master=app, text="Exit", text_color="white", command=exit_program, corner_radius=10, width=60, height=30, fg_color="red")
-    exit_button.place(x=app.winfo_width()-70, y=10)
+    # exit_button = ctk.CTkButton(master=app, text="Exit", text_color="white", command=exit_program, corner_radius=10, width=60, height=30, fg_color="red")
+    # exit_button.place(x=app.winfo_width()-70, y=10)
 
     # Load images and add buttons
     row = 1  # Start from the next row after the donation button
@@ -183,18 +184,23 @@ def show_main_page():
 
         col += 1
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+icon_dir = os.path.join(script_dir, "Capes", "icon.ico")
+
 # Initialize the app
 app = ctk.CTk()
 app.title("Capes++ Client")
-app.geometry("650x650")
+app.geometry("450x625")
 app.resizable(False, False)  # Disable resizing
+app.iconbitmap(icon_dir)
+# app.overrideredirect(True)
 
 # Set appearance mode and color theme
 ctk.set_appearance_mode("dark")  # Modes: "System" (default), "Dark", "Light"
 ctk.set_default_color_theme("blue")  # Themes: "blue" (default), "green", "dark-blue"
 
 wsize = 200 #this will be the "width" of the buttons below
-hsize = 30 #this will be the "height" of the buttons below
+hsize = 40 #this will be the "height" of the buttons below
 # Create initial page
 welcome_label = ctk.CTkLabel(app, text="Welcome to Capes++", font=("Helvetica", 40))  # Updated font size
 welcome_label.pack(pady=10)
@@ -228,3 +234,4 @@ mcExperience.pack(pady=10)
 
 # Run the application
 app.mainloop()
+
