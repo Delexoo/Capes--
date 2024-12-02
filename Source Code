@@ -105,7 +105,7 @@ def show_image_page():
         # Function to open the GitHub page
         def open_github():
             """Open the GitHub page in a web browser."""
-            webbrowser.open("https://github.com/Delexoo")
+            webbrowser.open("https://github.com/Delexoo/Capes--/blob/main/Source%20Code")
 
         # Function to open the folder
         def open_folder():
@@ -207,7 +207,7 @@ def show_cape_selection_page():
 
 # Initialize the root window
 root = tk.Tk()
-root.title("Cape Installer")
+root.title("Capes++")
 root.geometry("315x315")
 root.configure(bg="#2a2a2a")
 root.resizable(False, False)
