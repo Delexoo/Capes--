@@ -1,0 +1,219 @@
+import tkinter as tk
+from PIL import Image, ImageTk
+import os
+import tkinter.messagebox as messagebox
+import shutil
+import webbrowser
+
+# Initialize global variables
+target_filename = ""
+selected_cape_name = ""
+
+def get_image_path(image_name="2011.png"):
+    """Construct the file path for button images."""
+    return os.path.join(r"C:\Program Files\Capes++", "Assets", image_name)
+
+imgwsize = 90
+imghsize = 200
+
+# Map of capes to filenames
+cape_map = {
+    "15th Anniversary Cape": "cd9d82ab17fd92022dbd4a86cde4c382a7540e117fae7b9a2853658505a80625",
+    "Migrator Cape": "2340c0e03dd24a11b15a8b33c2a7e9e32abb2051b2481d0ba7defd635ca7a933",
+    "Follower's Cape": "569b7f2a1d00d26f30efe3f9ab9ac817b1e6d35f4f3cfb0324ef2d328223d350",
+    "Twitch Cape": "cb40a92e32b57fd732a00fc325e7afb00a7ca74936ad50d8e860152e482cfbde",
+    "Vanilla Cape": "f9a76537647989f9a0b6d001e320dac591c359e9e61a31f4ce11c88f207f0ad4",
+    "Cherry Blossom Cape": "afd553b39358a24edfe3b8a9a939fa5fa4faa4d9a9c3d6af8eafb377fa05c2bb",
+    "MCC Cape": "56c35628fe1c4d59dd52561a3d03bfa4e1a76d397c8b9c476c2f77cb6aebb1df",
+    "Minecraft Experience Cape": "7658c5025c77cfac7574aab3af94a46a8886e3b7722a895255fbf22ab8652434",
+}
+
+def copy_and_rename_image(image_name):
+    """Copy the selected image to the Minecraft directory and rename it."""
+    global target_filename
+
+    if not target_filename:
+        messagebox.showerror("Error", "No cape selected.")
+        return
+
+    try:
+        # Determine the target directory
+        cape_directory = target_filename[:2]  # First two characters of the hash
+        minecraft_assets_path = os.path.join(
+            os.environ['APPDATA'], ".minecraft", "assets", "skins", cape_directory
+        )
+
+        # Create the directory if it doesn't exist
+        os.makedirs(minecraft_assets_path, exist_ok=True)
+
+        # Check if the image name already has the "_cape" suffix and avoid adding it again
+        if "_cape" not in image_name:
+            image_name = f"{image_name.split('.')[0]}_cape.png"  # Add the "_cape" suffix only once
+
+        # Construct the source and target file paths
+        source_path = os.path.join(r"C:\Program Files\Capes++", "All Capes", image_name)
+        target_path = os.path.join(minecraft_assets_path, target_filename)
+
+        # Ensure the selected file exists
+        if not os.path.exists(source_path):
+            raise FileNotFoundError(f"File not found: {source_path}")
+
+        # Copy the file
+        shutil.copy(source_path, target_path)
+        messagebox.showinfo("Success", "Cape applied! Relaunch Minecraft.")
+        show_cape_selection_page()  # Return to the cape selection page
+    except Exception as e:
+        messagebox.showerror("Error", f"Error copying file: {e}")
+
+
+def show_image_page():
+    """Display the page with the image buttons."""
+    global selected_cape_name
+
+    # Clear the window
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    # Title label
+    title_label = tk.Label(root, text="Use the scrollwheel for more!", font=("Verdana", 9, "bold"), fg="white", bg="#2a2a2a")
+    title_label.pack(pady=10)
+
+    # Image selection frame with horizontal scrolling
+    image_frame = tk.Frame(root, bg="#2a2a2a")
+    image_frame.pack(pady=10)
+
+    canvas = tk.Canvas(image_frame, bg="#2a2a2a", bd=0, highlightthickness=0)
+    canvas.pack(side="left", fill="both", expand=True)
+    
+    
+        # Function to open the new page (frame)
+    def open_blank_page():
+        """Open a new blank page inside the same window."""
+        # Clear the window before showing the new page
+        for widget in root.winfo_children():
+            widget.destroy()
+
+        # Add a Back button
+        back_button = tk.Button(root, text="Back", command=show_cape_selection_page, bg="#ff5252", fg="white", relief="flat", font=("Helvetica", 10, "bold"))
+        back_button.place(relx=1.0, rely=0.05, anchor="ne")  # Position relative to the window size
+
+                # Function to open a link (for "Buy me Coffee")
+        def open_link():
+            """Open the Linktree page in a web browser."""
+            webbrowser.open("https://linktr.ee/delexo")
+
+        # Function to open the GitHub page
+        def open_github():
+            """Open the GitHub page in a web browser."""
+            webbrowser.open("https://github.com/Delexoo")
+
+        # Function to open the folder
+        def open_folder():
+            """Open the folder in a file explorer."""
+            folder_path = r"C:\Program Files\Capes++\All Capes"
+            os.startfile(folder_path)
+
+        # Create the "Buy me Coffee" button
+        coffee_button = tk.Button(root, text="Buy me Coffee!", command=open_link, bg="#04cc80", fg="white", relief="flat", font=("Helvetica", 10, "bold"))
+        coffee_button.place(relx=0.5, rely=0.3, anchor="center")  # Center it on the page
+
+        # Create the "Visit GitHub" button
+        github_button = tk.Button(root, text="Source Code", command=open_github, bg="#04cc80", fg="white", relief="flat", font=("Helvetica", 10, "bold"))
+        github_button.place(relx=0.5, rely=0.5, anchor="center")  # Center it on the page below the coffee button
+
+        # Create the "Open Folder" button
+        open_folder_button = tk.Button(root, text="Raw Cape Files", command=open_folder, bg="#04cc80", fg="white", relief="flat", font=("Helvetica", 10, "bold"))
+        open_folder_button.place(relx=0.5, rely=0.7, anchor="center")  # Center it on the page below the GitHub button
+
+
+        
+
+    # Create the "More!" button
+    more_button = tk.Button(root, text="More!", command=open_blank_page, bg="#383838", fg="gray", relief="flat", font=("Helvetica", 10, "bold"))
+    more_button.place(x=0, y=root.winfo_height() - 10, anchor="sw")  # Position it at the bottom left
+
+
+
+    # Add a Back button
+    back_button = tk.Button(root, text="Back", command=show_cape_selection_page, bg="#ff5252", fg="white", relief="flat", font=("Helvetica", 10, "bold"))
+    back_button.place(relx=1.0, rely=0.05, anchor="ne")  # Position relative to the window size
+
+    # Enlarged scrollbar with no border
+    scrollbar = tk.Scrollbar(image_frame, orient="horizontal", command=canvas.xview, width=12, bg="#2a2a2a", troughcolor="#2a2a2a")
+    scrollbar.pack(side="bottom", fill="x")
+
+    canvas.configure(xscrollcommand=scrollbar.set)
+
+    image_buttons_frame = tk.Frame(canvas, bg="#2a2a2a")
+    canvas.create_window((0, 0), window=image_buttons_frame, anchor="nw")
+
+    img_paths = ["2011.png", "2012.png", "2013.png", "2015.png", "2016.png", "2019.png", "Cobolt.png", "Experience.png", "CherryBlossom.png", 
+                 "Vanilla.png", "TikTok.png", "Twitch.png", "MCC.png", "15thAnni.png", "Mojang.png", "MojangClassic.png", "MojangStudio.png",
+                 "MapMaker.png", "JulianClarks.png", "Translator.png", "BugTracker.png", "Turtle.png", "Migrator.png", "MrMessiahs.png", 
+                 "Birthday.png", "Valentine.png", "1Mill.png", "Scrolls.png", "dB.png", "Awesome.png", "Bacon.png", "Blonk.png", "Cheapsh0t.png",
+                 "ChineseTranslator.png", "Christmas.png", "Frog.png", "icu.png", "NewYears.png", "Nocircle.png", "Nyan.png", "Pan.png",
+                 "Pride.png", "Prismarine.png", "Snail.png", "Squid.png", "Unknown.png", "Vet.png", "Xbox360.png", "XboxBirthday.png",
+                 "Youtube.png", "Heart.png", "Boobs.png",]
+
+    def on_image_button_click(image_name):
+        """Handle image button click and apply the cape."""
+        copy_and_rename_image(image_name)
+
+    for img_name in img_paths:
+        img_path = get_image_path(img_name)
+        img = Image.open(img_path)
+        img = img.resize((imgwsize, imghsize))
+        img_tk = ImageTk.PhotoImage(img)
+
+        img_button = tk.Button(image_buttons_frame, image=img_tk, command=lambda name=img_name: on_image_button_click(name), relief="flat", bg="#2a2a2a", fg="white")
+        img_button.image = img_tk  # Keep a reference to avoid garbage collection
+        img_button.pack(side="left", padx=5)
+
+    # Update the scrollable region
+    image_buttons_frame.update_idletasks()
+    canvas.config(scrollregion=canvas.bbox("all"))
+
+    # Bind mouse wheel to the root window for scrolling
+    def on_mouse_wheel(event):
+        if canvas.winfo_exists():  # Check if the canvas exists
+            canvas.xview_scroll(-1 * int(event.delta / 120), "units")
+
+    root.bind("<MouseWheel>", on_mouse_wheel)  # Bind scroll event to root window
+
+def show_cape_selection_page():
+    """Display the cape selection page."""
+    global target_filename, selected_cape_name
+
+    # Clear the window
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    body_label = tk.Label(root, text="Which one of these capes do you currently have equipped?", wraplength=280, justify="center", fg="white", bg="#2a2a2a")
+    body_label.pack(pady=5)
+
+    def on_cape_button_click(cape_name):
+        """Set the target filename and proceed to the image selection page."""
+        global target_filename, selected_cape_name
+        target_filename = cape_map.get(cape_name)
+        selected_cape_name = cape_name
+        show_image_page()
+
+    # Create buttons for each cape
+    for cape_name in cape_map:
+        cape_button = tk.Button(root, text=cape_name, command=lambda name=cape_name: on_cape_button_click(name), bg="#ff5252", fg="white", font=("Trebuchet MS", 8, "bold"))
+        cape_button.pack(pady=2)
+
+    root.mainloop()
+
+# Initialize the root window
+root = tk.Tk()
+root.title("Cape Installer")
+root.geometry("315x315")
+root.configure(bg="#2a2a2a")
+root.resizable(False, False)
+
+icon_path = os.path.join(r"C:\Program Files\Capes++", "Assets", "icon.ico")
+root.iconbitmap(icon_path)
+
+
+show_cape_selection_page()
