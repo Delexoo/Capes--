@@ -26,6 +26,7 @@ cape_map = {
     "Cherry Blossom Cape": "afd553b39358a24edfe3b8a9a939fa5fa4faa4d9a9c3d6af8eafb377fa05c2bb",
     "MCC Cape": "56c35628fe1c4d59dd52561a3d03bfa4e1a76d397c8b9c476c2f77cb6aebb1df",
     "Minecraft Experience Cape": "7658c5025c77cfac7574aab3af94a46a8886e3b7722a895255fbf22ab8652434",
+    "Mojang Office": "5c29410057e32abec02d870ecb52ec25fb45ea81e785a7854ae8429d7236ca26",
 }
 
 def copy_and_rename_image(image_name):
@@ -113,6 +114,34 @@ def show_image_page():
             folder_path = r"C:\Program Files\Capes++\All Capes"
             os.startfile(folder_path)
 
+        def show_photo():
+            global tk_image5  # Prevent garbage collection of the image
+            image_path5 = r"C:\\Program Files\\Capes++\\Assets\\DELEXO.png"  # Replace with your image path
+            image5 = Image.open(image_path5)
+            
+            # Check if the image has an alpha (transparency) channel and convert it to RGBA if necessary
+            if image5.mode != 'RGBA':
+                image5 = image5.convert('RGBA')
+            
+            # Resize the image
+            image5 = image5.resize((20, 20), Image.Resampling.LANCZOS)
+            
+            # Create a PhotoImage object for Tkinter
+            tk_image5 = ImageTk.PhotoImage(image5)
+
+            # Create a Label widget to display the image without any border
+            image_label5 = tk.Label(root, image=tk_image5, bd=0, highlightthickness=0)
+            
+            # Position the image in the bottom-left corner with 8-pixel spacing
+            image_label5.place(x=8+4, y=root.winfo_height() - 30 - 2)  # 8-pixel spacing from both left and bottom corners
+
+            # Create the body label and position it next to the image
+            body_label5 = tk.Label(root, text="@DELEXO", wraplength=80, justify="center", fg="white", bg="#2a2a2a")
+            
+            # Position the label to the right of the image with 8-pixel spacing
+            body_label5.place(x=8 + 25 + 4, y=root.winfo_height() - 30 - 2)  # Placing the label next to the image
+
+
         # Create the "Buy me Coffee" button
         coffee_button = tk.Button(root, text="Buy me Coffee!", command=open_link, bg="#04cc80", fg="white", relief="flat", font=("Helvetica", 10, "bold"))
         coffee_button.place(relx=0.5, rely=0.3, anchor="center")  # Center it on the page
@@ -124,6 +153,9 @@ def show_image_page():
         # Create the "Open Folder" button
         open_folder_button = tk.Button(root, text="Raw Cape Files", command=open_folder, bg="#04cc80", fg="white", relief="flat", font=("Helvetica", 10, "bold"))
         open_folder_button.place(relx=0.5, rely=0.7, anchor="center")  # Center it on the page below the GitHub button
+
+        show_photo()
+
 
 
         
@@ -148,12 +180,12 @@ def show_image_page():
     canvas.create_window((0, 0), window=image_buttons_frame, anchor="nw")
 
     img_paths = ["2011.png", "2012.png", "2013.png", "2015.png", "2016.png", "2019.png", "Cobolt.png", "Experience.png", "CherryBlossom.png", 
-                 "Vanilla.png", "TikTok.png", "Twitch.png", "MCC.png", "15thAnni.png", "Mojang.png", "MojangClassic.png", "MojangStudio.png",
+                 "Vanilla.png", "MojangOffice.png", "TikTok.png", "Twitch.png", "MCC.png", "15thAnni.png", "Mojang.png", "MojangClassic.png", "MojangStudio.png",
                  "MapMaker.png", "JulianClarks.png", "Translator.png", "BugTracker.png", "Turtle.png", "Migrator.png", "MrMessiahs.png", 
-                 "Birthday.png", "Valentine.png", "1Mill.png", "Scrolls.png", "dB.png", "Awesome.png", "Bacon.png", "Blonk.png", "Cheapsh0t.png",
-                 "ChineseTranslator.png", "Christmas.png", "Frog.png", "icu.png", "NewYears.png", "Nocircle.png", "Nyan.png", "Pan.png",
-                 "Pride.png", "Prismarine.png", "Snail.png", "Squid.png", "Unknown.png", "Vet.png", "Xbox360.png", "XboxBirthday.png",
-                 "Youtube.png", "Heart.png", "Boobs.png",]
+                 "Birthday.png", "Valentine.png", "1Mill.png", "Scrolls.png", "CMDblock.png", "Gift.png", "Crown.png", "dB.png", "Awesome.png",
+                 "Bacon.png", "Blonk.png", "Cheapsh0t.png", "ChineseTranslator.png", "Christmas.png", "Frog.png", "icu.png", "NewYears.png",
+                 "Nocircle.png", "Nyan.png", "Pan.png", "Pride.png", "Prismarine.png", "Snail.png", "Squid.png", "Unknown.png", "Vet.png",
+                 "Xbox360.png", "XboxBirthday.png", "Bedwars.png", "Youtube.png", "Heart.png", "Boobs.png",]
 
     def on_image_button_click(image_name):
         """Handle image button click and apply the cape."""
@@ -201,7 +233,7 @@ def show_cape_selection_page():
     # Create buttons for each cape
     for cape_name in cape_map:
         cape_button = tk.Button(root, text=cape_name, command=lambda name=cape_name: on_cape_button_click(name), bg="#ff5252", fg="white", font=("Trebuchet MS", 8, "bold"))
-        cape_button.pack(pady=2)
+        cape_button.pack(pady=1)
 
     root.mainloop()
 
